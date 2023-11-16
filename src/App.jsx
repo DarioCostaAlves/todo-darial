@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1 className="text-sm">React App</h1>
+      <h1 className="text-sm">React Appa</h1>
     </>
   );
 }
