@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header>
       <h1>Todo</h1>
-      <p>Os items irão persistir no alojamento local do browser</p>
+      <p>Os items irão persistir no alojamento local do browser.</p>
     </header>
   );
 };
