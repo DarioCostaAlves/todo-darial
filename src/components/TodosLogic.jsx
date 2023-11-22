@@ -1,6 +1,7 @@
 import React from "react";
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
+import Navbar from "@/components/Navbar";
 
 const TodosLogic = () => {
   const todos = [
@@ -22,6 +23,7 @@ const TodosLogic = () => {
   ];
   return (
     <div>
+      <Navbar />
       <InputTodo />
       <TodosList todosProps={todos} />
     </div>
