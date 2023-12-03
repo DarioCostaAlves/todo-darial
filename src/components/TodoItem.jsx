@@ -1,5 +1,39 @@
-const TodoItem = ({ itemProp }) => {
-  return <li>{itemProp.id}</li>;
+const TodoItem = ({ itemProp, handleChange, delTodo }) => {
+  return (
+    <li className="flex items-center px-20 py-3 border-b border-gray-200 hover:bg-gray-50 transition duration-300 ease-in-out">
+      <input
+        type="checkbox"
+        checked={itemProp.completed}
+        onChange={() => handleChange(itemProp.id)}
+        className="h-6 w-6 rounded-md border-2 border-gray-300 checked:bg-blue-500 checked:border-transparent focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none appearance-none"
+      />
+
+      <p className="ml-4 text-lg font-semibold text-gray-800 capitalize">
+        {itemProp.title}
+      </p>
+
+      <button
+        onClick={() => delTodo(itemProp.id)}
+        className="ml-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded-full inline-flex items-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5 mr-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+        Remove
+      </button>
+    </li>
+  );
 };
 
 export default TodoItem;

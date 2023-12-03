@@ -1,10 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
-import Navbar from "@/components/Navbar";
 
 const TodosLogic = () => {
-  const todos = [
+  const [todos, setTodos] = useState([
     {
       id: 1,
       title: "Criar ambiente de desenvolvimento",
@@ -20,12 +19,39 @@ const TodosLogic = () => {
       title: "Alojar para um serviço de alojamento",
       completed: false,
     },
-  ];
+  ]);
+
+  const delTodo = (id) => {
+    setTodos([
+      ...todos.filter((todo) => {
+        return todo.id !== id;
+      }),
+    ]);
+  };
+
+  const handleChange = (id) => {
+    setTodos((prevState) =>
+      prevState.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+    console.log(todos);
+  };
+
   return (
     <div>
-      <Navbar />
       <InputTodo />
-      <TodosList todosProps={todos} />
+      <TodosList
+        todosProps={todos}
+        handleChange={handleChange}
+        delTodo={delTodo}
+      />
     </div>
   );
 };
