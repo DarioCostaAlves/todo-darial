@@ -1,21 +1,22 @@
 import { useState } from "react";
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
+import { v4 as uuidv4 } from "uuid";
 
 const TodosLogic = () => {
   const [todos, setTodos] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       title: "Criar ambiente de desenvolvimento",
       completed: true,
     },
     {
-      id: 2,
+      id: uuidv4(),
       title: "Desenvolver website e adicionar conteúdo",
       completed: false,
     },
     {
-      id: 3,
+      id: uuidv4(),
       title: "Alojar para um serviço de alojamento",
       completed: false,
     },
@@ -46,7 +47,7 @@ const TodosLogic = () => {
 
   const addTodoItem = (title) => {
     const newTodo = {
-      id: 4,
+      id: uuidv4(),
       title: title,
       completed: false,
     };
