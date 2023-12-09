@@ -21,16 +21,27 @@ const InputTodo = ({ addTodoItem }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center max-w-md mx-auto"
+      >
         <input
           type="text"
           placeholder="Adicionar tarefa..."
           value={title}
           onChange={handleChange}
+          className="px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:border-blue-500 flex-grow"
         />
-        <button>Submeter</button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+        >
+          Submeter
+        </button>
       </form>
-      <span>{message}</span>
+      <span className="text-gray-500 mt-2 block text-center mx-auto max-w-md">
+        {message}
+      </span>
     </>
   );
 };
