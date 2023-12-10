@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
+  const [updateInput, setUpdateInput] = useState(itemProp.title);
   const [editing, setEditing] = useState(false);
 
   const handleEditing = () => {
@@ -9,6 +10,7 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
 
   const handleUpdatedDone = (event) => {
     if (event.key === "Enter") {
+      setUpdate(updateInput, itemProp.id);
       setEditing(false);
     }
   };
@@ -26,7 +28,7 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
           itemProp.completed ? "line-through text-gray-500" : "text-gray-800"
         } capitalize`}
       >
-        {itemProp.title}
+        {updateInput}
       </p>
 
       <button onClick={handleEditing}>Edit</button>
@@ -52,11 +54,11 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
       </button>
       <input
         type="text"
-        value={itemProp.title}
+        value={updateInput}
         className={`${
           editing ? "block" : "hidden"
         } ml-4 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:border-blue-500 flex-grow`}
-        onChange={(e) => setUpdate(e.target.value, itemProp.id)}
+        onChange={(e) => setUpdateInput(e.target.value)}
         onKeyDown={handleUpdatedDone}
       />
     </li>
