@@ -1,26 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InputTodo from "@/components/InputTodo";
 import TodosList from "@/components/TodosList";
 import { v4 as uuidv4 } from "uuid";
 
 const TodosLogic = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: uuidv4(),
-      title: "Criar ambiente de desenvolvimento",
-      completed: true,
-    },
-    {
-      id: uuidv4(),
-      title: "Desenvolver website e adicionar conteúdo",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "Alojar para um serviço de alojamento",
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState(getInitialTodos());
+
+  function getInitialTodos() {
+    //getting stored items
+    const temp = localStorage.getItem("todos");
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
+
+  useEffect(() => {
+    //storing todos items
+    const temp = JSON.stringify(todos);
+    localStorage.setItem("todos", temp);
+  }, [todos]);
 
   const delTodo = (id) => {
     setTodos([
