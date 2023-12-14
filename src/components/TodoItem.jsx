@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
+import { useTodosContext } from "@/context/TodosContext";
 
-const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
+const TodoItem = ({ itemProp }) => {
   // const [updateInput, setUpdateInput] = useState(itemProp.title);
+  const { handleChange, delTodo, setUpdate } = useTodosContext();
 
   const [editing, setEditing] = useState(false);
 
